@@ -21,4 +21,10 @@ public class Member {
     private Long age;
     private String telNo;
 
+    public Member(String name, Long age, String telNo) {
+        this.name = name;
+        this.age = age;
+        this.telNo = telNo;
+    }
+
 }
