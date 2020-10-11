@@ -11,7 +11,9 @@ import org.springframework.stereotype.Service;
 @NoArgsConstructor
 public class MemberServiceImpl implements MemberService {
 
+    @Autowired
     private MemberRepository memberRepository;
+
     private PhoneNumberValidator phoneNumberValidator;
 
     @Autowired
