@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: software-testing
+  profiles:
+    active: prod
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3307/software_testing?useUnicode=true&charsetEncoding=UTF-8
+    username: root
+    password: admin@2020
+  jpa:
+    hibernate:
+      dialect: com.mysql.cj.jdbc.Driver
+
