@@ -8,6 +8,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
@@ -19,11 +20,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@TestPropertySource("/application-test.properties")
+//@TestPropertySource("/application-test.properties")
 public class MemberRepositoryTest {
 
     @Autowired
-    private EntityManager entityManager;
+    private TestEntityManager entityManager;
 
     @Autowired
     private MemberRepository memberRepository;
@@ -39,7 +40,8 @@ public class MemberRepositoryTest {
         Member member = new Member("a", 13L, "0123456789");
 
         // When
-        memberRepository.save(member);
+        // memberRepository.save(member);
+        entityManager.persist(member);
 
         // Then
         Optional<Member> memberOptional = memberRepository.findByName(member.getName());
